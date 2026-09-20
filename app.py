@@ -9,4 +9,17 @@ if hasattr(main, 'run'):
     main.run()
 else:
     st.success("Pro Loaded! main.py connected")
-    
+   def create_pdf(g_user, l_user):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", "B", 16)
+    pdf.cell(200, 10, txt=f"Report for {g_user}", ln=True, align='C')
+    pdf.ln(10)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 10, txt=f"GitHub: {g_user}", ln=True)
+    pdf.cell(200, 10, txt=f"LeetCode: {l_user}", ln=True)
+    return pdf.output(dest='S').encode('latin-1')
+
+if st.button("Download PDF Report"):
+    pdf_bytes = create_pdf(github_username, leetcode_username)
+    st.download_button("Download Now", pdf_bytes, file_name="report.pdf", mime="application/pdf") 
