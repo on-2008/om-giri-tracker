@@ -1,3 +1,4 @@
+from fpdf import FPDF
 import streamlit as st
 import requests
 import plotly.graph_objects as go
