@@ -1,4 +1,5 @@
 import streamlit as st
+from fpdf import fpdf
 import main
 
 st.set_page_config(page_title="Tracker Pro", page_icon="🚀")
